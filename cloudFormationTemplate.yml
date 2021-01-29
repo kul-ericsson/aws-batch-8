@@ -41,3 +41,9 @@ Outputs:
   ubuntuServerPublicIP:
     Description: Public IP of EC2 Server to Acees fro Internet
     Value: !GetAtt ubuntuServer.PublicIp
+  httpUrl: 
+    Description: URL to Access HTTPD Running on Server
+    Value: !Join
+      - ''
+      - - 'http://'
+        - !GetAtt ubuntuServer.PublicDnsName
