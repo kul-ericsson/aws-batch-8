@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - apt-get update -y
+      - export DEBIAN_FRONTEND=noninteractive && apt-get install -y awscli
+  pre_build:
+    commands:
+      - aws --version
+  build:
+    commands:
+      - cat /etc/os-release >> demo.txt
+      - hostname >> demo.txt
+      - date >> demo.txt
+artifacts:
+  files:
+    - demo.txt
