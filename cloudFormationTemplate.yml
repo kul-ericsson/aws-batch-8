@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: This is CFT template for AWS Session
+
+Parameters:
+  key: 
+    Description: Choose a Key Pair from below List to access EC2 Server
+    Type: AWS::EC2::KeyPair::KeyName
+  ami:
+    Description: Type the AMI ID to be used to Create EC2 Server
+    Type: String
+  sourceIp:
+    Description: Provide CIDR Block Range to Access EC2 Server on SSH Port, Sample Format- 23.54.67.45/32 or 0.0.0.0/0 for All Open Access
+    Type: String
+
+Resources: 
+  ubuntuServer:
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: !Ref ami
+      InstanceType: t2.micro
+      KeyName: 
+        Ref: key
+      SecurityGroups:
+        - Ref: securityGroup
+  
+  securityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Managed by CFT
+      SecurityGroupIngress:
+      - CidrIp: !Ref sourceIp
+        FromPort: 22
+        ToPort: 22
+        IpProtocol: tcp
