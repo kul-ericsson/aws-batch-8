@@ -36,3 +36,8 @@ Resources:
         FromPort: 80
         ToPort: 82
         IpProtocol: tcp
+
+Outputs:
+  ubuntuServerPublicIP:
+    Description: Public IP of EC2 Server to Acees fro Internet
+    Value: !GetAtt ubuntuServer.PublicIp
