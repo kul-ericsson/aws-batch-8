@@ -32,3 +32,7 @@ Resources:
         FromPort: 22
         ToPort: 22
         IpProtocol: tcp
+      - CidrIp: !Ref sourceIp
+        FromPort: 80
+        ToPort: 82
+        IpProtocol: tcp
