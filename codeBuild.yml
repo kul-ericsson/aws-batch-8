@@ -4,14 +4,18 @@ phases:
     commands:
       - apt-get update -y
       - export DEBIAN_FRONTEND=noninteractive && apt-get install -y awscli
+      - apt-get install -y maven
   pre_build:
     commands:
       - aws --version
+      - mvn --version
   build:
     commands:
       - cat /etc/os-release >> demo.txt
       - hostname >> demo.txt
       - date >> demo.txt
+      - mvn package
 artifacts:
   files:
     - demo.txt
+    - target/LiquorShop.war
