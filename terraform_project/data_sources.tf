@@ -14,3 +14,7 @@ data "aws_route_table" "default"{
     values = ["default"]
   }
 }
+
+data "aws_subnet_ids" "sn-ids" {
+  vpc_id = aws_vpc.vpc.id
+}
