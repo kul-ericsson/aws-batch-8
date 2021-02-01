@@ -14,4 +14,7 @@ resource "null_resource" "mount_efs" {
       "sudo chown ubuntu:ubuntu /data"
     ]
   }
+  triggers = {
+    "build" = "${timestamp()}"
+  }
 }
