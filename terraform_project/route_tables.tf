@@ -18,4 +18,8 @@ resource "aws_route_table" "natgw_rt" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_nat_gateway.natgw.id
   }
+  route {
+    cidr_block = "172.31.0.0/16"
+    gateway_id = aws_vpc_peering_connection.pc.id
+  }
 }
