@@ -19,4 +19,11 @@ resource "aws_security_group" "sg" {
     to_port = 22
     cidr_blocks = [aws_vpc.vpc.cidr_block, data.aws_vpc.default.cidr_block]
   }
+  ingress {
+    description = "EFS Access"
+    protocol = "tcp"
+    from_port = 2049
+    to_port = 2049
+    cidr_blocks = [aws_vpc.vpc.cidr_block]
+  }
 }
