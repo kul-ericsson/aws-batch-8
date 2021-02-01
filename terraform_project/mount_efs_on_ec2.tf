@@ -1,4 +1,5 @@
 resource "null_resource" "mount_efs" {
+  depends_on = [ aws_security_group.sg ]
   provisioner "remote-exec" {
     connection {
       type = "ssh"
