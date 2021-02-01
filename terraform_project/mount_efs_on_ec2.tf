@@ -15,6 +15,6 @@ resource "null_resource" "mount_efs" {
     ]
   }
   triggers = {
-    "build" = "${timestamp()}"
+    build = timestamp()
   }
 }
